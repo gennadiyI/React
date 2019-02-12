@@ -1,0 +1,14 @@
+.Register {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #2dc95c;
+ }
+ 
+ .Register__form {
+    width: 30%;
+    background-color:#c92a2a;
+    padding: 30px;
+    border-radius: 10px;
+ }

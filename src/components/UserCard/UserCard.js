@@ -1,25 +1,22 @@
-import React, { Component } from 'react';
-import './UserCard.css';
-import { Card, CardImg, CardText, CardBody,
-    CardTitle, CardSubtitle, Button } from 'reactstrap';
+import React, { Component } from "react";
+import "./UserCard.css";
 
+class UserCard extends Component {
+    render() {
+        const { title, description, image } = this.props;
 
-    class UserCard extends Component {
-        render() {
-            const {username, description, image} = this.props;
-    
-    
-            return (
-                <Card className = "UserCard mb-5">
-                <CardImg top width="100%" src={image} alt="Card image cap" />
-                <CardBody>
-                   <CardTitle className = "">{username} </CardTitle>
-                   
-                   <CardText> {description} </CardText>
-                </CardBody>
-         </Card>
-            )
-        }
+        return (
+            <div className="UserCard">
+                <div className="UserCard__image">
+                    <img className="UserCard__image__img" src={image} alt="something" />
+                </div>
+                <div className="UserCard__content">
+                    <div className="UserCard__content__title">{title}</div>
+                    <div className="UserCard__content__description">{description}</div>
+                </div>
+            </div>
+        );
     }
+}
 
-    export default UserCard;
+export default UserCard;
