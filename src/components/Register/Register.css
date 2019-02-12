@@ -3,6 +3,12 @@
     align-items: center;
     justify-content: center;
     height: 100vh;
+
+    background-image: url("https://cs8.pikabu.ru/post_img/2016/03/16/7/1458128944112090884.jpg"); /* The image used */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: auto; /* */
+
     background-color: #2dc95c;
  }
  
