@@ -4,10 +4,10 @@
     justify-content: center;
     height: 100vh;
 
-    background-image: url("https://cs8.pikabu.ru/post_img/2016/03/16/7/1458128944112090884.jpg"); /* The image used */
+    background-image: url("https://static.boredpanda.com/blog/wp-content/uuuploads/optical-illusions-part-2/optical-illusions-part-2-9.jpg"); /* The image used */
     background-position: center; /* Center the image */
     background-repeat: no-repeat; /* Do not repeat the image */
-    background-size: auto; /* */
+    background-size: 100%; /* */
 
     background-color: #2dc95c;
  }

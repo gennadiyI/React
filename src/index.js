@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+import dotenv from "dotenv";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import App from './App';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Login from './components/Login/Login';
-import Register from './components/Register/Register';
+import RegisterContainer from './containers/RegisterContainer'
+
+dotenv.config();
 
 
 class Root extends Component {
@@ -15,7 +18,7 @@ class Root extends Component {
                 <Switch>
                     <Route exact path="/" component={App} />
                     <Route exact path="/login" component={Login} />
-                    <Route exact path="/registration" component={Register} />
+                    <Route exact path="/registration" component={RegisterContainer} />
                 </Switch>
             </BrowserRouter>
         )

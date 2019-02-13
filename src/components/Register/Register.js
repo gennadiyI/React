@@ -22,9 +22,10 @@ class Register extends Component {
 
 
     render() {
-        const { username } = this.state;
-        const { email } = this.state;
-        const { password } = this.state;
+        const { username, email, password } = this.state;
+
+        const { onRegister } = this.props;
+
 
 
         return (
@@ -57,7 +58,9 @@ class Register extends Component {
                                 className="form-control" type="password" />
                         </div>
 
-                        <Button color="dark"> Registration </Button>
+                        <Button
+                            onClick={() => onRegister(email, password, username)}
+                            color="dark"> Registration </Button>
                     </form>
                 </div>
             </div>
