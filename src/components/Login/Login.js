@@ -31,10 +31,12 @@ class Login extends Component {
 
     render() {
 
+
         const { email } = this.state;
         const { password } = this.state;
         const { onLogin } = this.props;
         return (
+
             <div className="Login">
                 <div className="Login_content">
                     <h2>Login</h2>

@@ -17,9 +17,12 @@ class UserList extends Component {
                 {userList.map((user, index) => (
                     <UserCard
                         key={`usercard ${index}`}
-                        image={user.image}
-                        title={user.title}
-                        description={user.description}
+                        // image={user.image}
+                        // title={user.title}
+                        // description={user.description}
+                        image={user.image || placeHolderImage}
+                        username={user.username}
+                        email={user.email}
                     />
                 ))}
             </div>

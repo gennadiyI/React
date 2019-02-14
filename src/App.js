@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import Posts from "./components/Posts/Posts";
 import './App.css';
-import UserList from "./components/UserList/UserList";
+import UserList from "./containers/UserListContainer";
+// import UserList from "./components/UserList/UserList";
 import Header from "./components/Header/Header";
+import { Row, Container } from "reactstrap";
 
 
 class App extends Component {

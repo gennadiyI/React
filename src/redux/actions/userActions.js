@@ -2,7 +2,7 @@ import CryptoJS from "crypto-js";
 import BootcampAPI from "../../helpers/BootcampAPI";
 import {
     API, REGISTER_SUCCESS, REGISTER_ERROR,
-    LOGIN_SUCCESS, LOGIN_ERRORR
+    LOGIN_SUCCESS, LOGIN_ERRORR, GET_USERS_ERROR, GET_USERS_SUCCESS
 } from "../../constants";
 
 /* ----- actions  ------- */
@@ -32,6 +32,23 @@ const loginError = () => {
     return {
         type: LOGIN_ERRORR,
         isLoggedIn: false,
+    };
+};
+
+
+
+const getUsersSuccess = res => {
+    return {
+        type: GET_USERS_SUCCESS,
+        payload: res.data.payload
+    };
+};
+
+
+const getUsersError = res => {
+    return {
+        type: GET_USERS_ERROR,
+        payload: res.data.payload
     };
 };
 
@@ -67,4 +84,16 @@ export const login = (email, password) => {
             })
             .catch(() => dispatch(loginError()));
     };
+};
+
+export const getUsers = () => {
+    return dispatch => {
+        return BootcampAPI.get(API.GET_USERS)
+            .then(res => dispatch(getUsersSuccess(res)))
+            .catch(err => {
+                console.log(err);
+                dispatch(getUsersError());
+            });
+    };
+
 };

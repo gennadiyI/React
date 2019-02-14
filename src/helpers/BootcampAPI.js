@@ -17,7 +17,8 @@ class APIClass {
 
     get(url) {
         return this.instance.get(url, {
-            method: "get",
+            // method: "get",
+
             headers: this.getDefaultHeaders()
         });
     }

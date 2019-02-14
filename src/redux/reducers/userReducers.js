@@ -1,12 +1,14 @@
 
 import {
     REGISTER_SUCCESS, REGISTER_ERROR,
-    LOGIN_SUCCESS, LOGIN_ERRORR
+    LOGIN_SUCCESS, LOGIN_ERRORR,
+    GET_USERS_SUCCESS, GET_USERS_ERROR
 } from "../../constants"
 
 const defaultState = {
     isRegistered: false,
-    isLoggedIn: false
+    isLoggedIn: false,
+    users: null
 };
 
 
@@ -33,3 +35,16 @@ export const loginReducer = (state = defaultState, action) => {
     }
 
 };
+
+export const getUsersReducer = (state = defaultState, action) => {
+    switch (action.type) {
+        case GET_USERS_SUCCESS:
+            return { ...state, users: action.payload };
+        case GET_USERS_ERROR:
+            return { ...state, users: null };
+        default:
+            return state;
+
+    }
+
+}
