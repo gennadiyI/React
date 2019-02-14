@@ -4,11 +4,7 @@
     justify-content: center;
     height: 100vh;
 
-    background-image: url("https://static.boredpanda.com/blog/wp-content/uuuploads/optical-illusions-part-2/optical-illusions-part-2-9.jpg"); /* The image used */
-    background-position: center; /* Center the image */
-    background-repeat: no-repeat; /* Do not repeat the image */
-    background-size: 100%; /* */
-
+    
     background-color: #2dc95c;
  }
  
@@ -17,4 +13,9 @@
     background-color:#c92a2a;
     padding: 30px;
     border-radius: 10px;
+ }
+
+ .Register_content_link {
+
+   margin-top: 10px;
  }

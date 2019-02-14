@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './PostCard.css';
 import {
     Card, CardImg, CardText, CardBody,
-    CardTitle, CardSubtitle, Button
+    CardTitle
 } from 'reactstrap';
 //import placeHolderImage from "../../assets/image-placeholder.svg";
 

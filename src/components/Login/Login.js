@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Button } from "reactstrap";
 import './Login.css';
+import { Link } from "react-router-dom";
 
 
 class Login extends Component {
@@ -9,7 +10,7 @@ class Login extends Component {
         super();
         this.state = {
             email: "",
-            password: null,
+            password: "",
 
         }
     }
@@ -32,6 +33,7 @@ class Login extends Component {
 
         const { email } = this.state;
         const { password } = this.state;
+        const { onLogin } = this.props;
         return (
             <div className="Login">
                 <div className="Login_content">
@@ -59,8 +61,13 @@ class Login extends Component {
 
 
 
-                        <Button color="dark"> Login </Button>
+                        <Button
+                            onClick={() => onLogin(email, password)}
+                            color="dark"> Login</Button>
                     </form>
+                    <div className="Login_content_link">
+                        <Link to="/">already  login </Link>
+                    </div>
                 </div>
             </div>
         );

@@ -5,22 +5,35 @@ import dotenv from "dotenv";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import App from './App';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import Login from './components/Login/Login';
-import RegisterContainer from './containers/RegisterContainer'
+
+import RegisterContainer from './containers/RegisterContainer';
+import { createStore, applyMiddleware } from "redux";
+import reduxThunk from "redux-thunk";
+import { Provider } from "react-redux";
+import rootReducer from "./redux/reducers";
+// import Login from './components/Login/Login';
+import LoginContainer from './containers/LoginContainer';
+
 
 dotenv.config();
+
+
+
+const store = createStore(rootReducer, {}, applyMiddleware(reduxThunk));
 
 
 class Root extends Component {
     render() {
         return (
-            <BrowserRouter>
-                <Switch>
-                    <Route exact path="/" component={App} />
-                    <Route exact path="/login" component={Login} />
-                    <Route exact path="/registration" component={RegisterContainer} />
-                </Switch>
-            </BrowserRouter>
+            <Provider store={store}>
+                <BrowserRouter>
+                    <Switch>
+                        <Route exact path="/" component={App} />
+                        <Route exact path="/login" component={LoginContainer} />
+                        <Route exact path="/registration" component={RegisterContainer} />
+                    </Switch>
+                </BrowserRouter>
+            </Provider>
         )
     }
 }
