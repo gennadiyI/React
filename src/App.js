@@ -1,29 +1,26 @@
-import React, { Component } from 'react';
-import Posts from "./components/Posts/Posts";
-import './App.css';
-import UserList from "./containers/UserListContainer";
-// import UserList from "./components/UserList/UserList";
-import Header from "./components/Header/Header";
+import React, { Component } from "react";
+import Posts from "./containers/PostsContainer";
 import { Row, Container } from "reactstrap";
-
+import UserList from "./containers/UserListContainer";
+import Header from "./containers/HeaderContainer";
+import "./App.css";
 
 class App extends Component {
   render() {
     return (
-
       <div className="App">
-        <div className="container">
-          <Header />
-          {/* <PostModal /> */}
-          <div className="row">
+        <Header />
+        <Container>
+          <Row>
             <div className="col-8">
               <Posts />
             </div>
             <div className="col-4">
               <UserList />
             </div>
-          </div>
-        </div>
+          </Row>
+        </Container>
+        {/* <PostModal /> */}
       </div>
     );
   }

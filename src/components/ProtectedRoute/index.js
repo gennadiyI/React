@@ -9,11 +9,9 @@ import "./index.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import rootReducer from "./redux/reducers";
 import App from "./App";
+import ProtectedRoute from "./components/ProtectedRoute";
 import LoginContainer from "./containers/LoginContainer";
 import RegisterContainer from "./containers/RegisterContainer";
-import ProtectedRoute from "react-router-protected-route";
-
-
 
 dotenv.config();
 
@@ -24,16 +22,6 @@ const store = createStore(
     composeEnhancers(applyMiddleware(reduxThunk))
 );
 
-const validateToken = () => {
-
-    const token = localStorage.getItem("JwtToken");
-
-    if (token) {
-        return true;
-    }
-    return false
-}
-
 class Root extends Component {
     render() {
         return (
@@ -41,9 +29,8 @@ class Root extends Component {
                 <BrowserRouter>
                     <Switch>
                         <ProtectedRoute exact path="/" component={App} />
-                        <Route exact path="/" component={App} />
                         <Route exact path="/login" component={LoginContainer} />
-                        <Route exact path="/registration" component={RegisterContainer} />
+                        <Route exact path="/register" component={RegisterContainer} />
                     </Switch>
                 </BrowserRouter>
             </Provider>
@@ -52,9 +39,3 @@ class Root extends Component {
 }
 
 ReactDOM.render(<Root />, document.getElementById("root"));
-
-
-
-
-ReactDOM.render(<Root />, document.getElementById('root'));
-

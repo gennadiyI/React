@@ -20,6 +20,7 @@ class PostCard extends Component {
 
                     <CardText> {description} </CardText>
                 </CardBody>
+
             </Card>
         )
     }

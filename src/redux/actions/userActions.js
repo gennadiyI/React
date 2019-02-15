@@ -1,41 +1,40 @@
 import CryptoJS from "crypto-js";
 import BootcampAPI from "../../helpers/BootcampAPI";
 import {
-    API, REGISTER_SUCCESS, REGISTER_ERROR,
-    LOGIN_SUCCESS, LOGIN_ERRORR, GET_USERS_ERROR, GET_USERS_SUCCESS
+    API,
+    REGISTER_SUCCESS,
+    REGISTER_ERROR,
+    LOGIN_ERROR,
+    LOGIN_SUCCESS,
+    GET_USERS_SUCCESS,
+    GET_USERS_ERROR
 } from "../../constants";
 
-/* ----- actions  ------- */
+/* ------ actions ------- */
 
 const registerSuccess = () => {
     return {
-        type: REGISTER_SUCCESS,
-        isRegistered: true,
+        type: REGISTER_SUCCESS
     };
 };
+
 const registerError = () => {
     return {
-        type: REGISTER_ERROR,
-        isRegistered: false,
+        type: REGISTER_ERROR
     };
 };
-
-
 
 const loginSuccess = () => {
     return {
-        type: LOGIN_SUCCESS,
-        isLoggedIn: true,
+        type: LOGIN_SUCCESS
     };
 };
+
 const loginError = () => {
     return {
-        type: LOGIN_ERRORR,
-        isLoggedIn: false,
+        type: LOGIN_ERROR
     };
 };
-
-
 
 const getUsersSuccess = res => {
     return {
@@ -44,27 +43,21 @@ const getUsersSuccess = res => {
     };
 };
 
-
-const getUsersError = res => {
+const getUsersError = () => {
     return {
-        type: GET_USERS_ERROR,
-        payload: res.data.payload
+        type: GET_USERS_ERROR
     };
 };
 
-
-
-
-/* ----- action creators  ------- */
+/* ---- action creators ----- */
 
 export const register = (username, email, password) => {
     return dispatch => {
         return BootcampAPI.post(API.REGISTER, {
-            username,
-            email,
+            email: email,
+            username: username,
             hashedPassword: CryptoJS.SHA256(password).toString()
         })
-
             .then(() => dispatch(registerSuccess()))
             .catch(() => dispatch(registerError()));
     };
@@ -73,12 +66,12 @@ export const register = (username, email, password) => {
 export const login = (email, password) => {
     return dispatch => {
         return BootcampAPI.post(API.LOGIN, {
-            email,
+            email: email,
             hashedPassword: CryptoJS.SHA256(password).toString()
         })
-
             .then(res => {
                 const token = res.data.payload.token;
+
                 localStorage.setItem("jwtToken", token);
                 dispatch(loginSuccess());
             })
@@ -89,11 +82,12 @@ export const login = (email, password) => {
 export const getUsers = () => {
     return dispatch => {
         return BootcampAPI.get(API.GET_USERS)
-            .then(res => dispatch(getUsersSuccess(res)))
+            .then(res => {
+                dispatch(getUsersSuccess(res));
+            })
             .catch(err => {
-                console.log(err);
+                console.error(err);
                 dispatch(getUsersError());
             });
     };
-
 };

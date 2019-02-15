@@ -1,53 +1,32 @@
 import React, { Component } from "react";
 import { Button } from "reactstrap";
-import logo from "../../assets/instagram-logo.png";
-import "./Header.css";
 import PostModal from "../PostModal/PostModal";
-
-
-
-
+import accentureLogo from "../../assets/instagram-logo.png";
+import "./Header.css";
 
 class Header extends Component {
-
-    constructor() {
-        super();
-        this.state = {
-            isOpened: false,
-
-        }
-        this.onOpenModal = this.onOpenModal.bind(this);
-    }
-    onOpenModal = () => {
-        this.setState({ isOpen: true });
-        console.log("opened");
-
-    }
-
-    onCloseModal = () => {
-        this.setState({ isOpen: false });
-        console.log("opened");
-
-    }
-
-
     render() {
-        const { isOpen } = this.state;
+        const { isOpen, toggleModal, onInputChange, onPostSubmit } = this.props;
+
         return (
             <div className="Header">
                 <div className="Header__title">
                     <img
                         className="Header__title__logo"
-                        src={logo}
-                        alt="logo"
+                        src={accentureLogo}
+                        alt="accenture"
                     />
-                    title
-          </div>
-                <Button onClick={this.onOpenModal} color="primary">Create post</Button>
-                {isOpen && <PostModal onClose={this.onCloseModal} />}
-
-
-
+                    Bootcamp title
+        </div>
+                <Button onClick={toggleModal} color="dark">
+                    Upload
+        </Button>
+                {isOpen && <PostModal
+                    onImageUpload={this.onImageUpload}
+                    onInputChange={onInputChange}
+                    onClose={toggleModal}
+                    onPostSubmit={onPostSubmit}
+                />}
             </div>
         );
     }

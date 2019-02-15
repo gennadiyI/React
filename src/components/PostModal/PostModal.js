@@ -3,7 +3,7 @@ import "./PostModal.css";
 
 class PostModal extends Component {
   render() {
-    const { onClose } = this.props;
+    const { onClose, onInputChange, onImageUpload, onPostSubmit } = this.props;
 
 
 
@@ -14,17 +14,27 @@ class PostModal extends Component {
           <form>
             <div className="form-group">
               <label>Caption:</label>
-              <input className="form-control" type="text" />
+              <input className="form-control"
+                onChange={onInputChange}
+                type="text" />
             </div>
 
             <div className="form-group">
-              <input type="file" className="form-control-file" />
+              <input type="file"
+                onChange={onImageUpload}
+                className="form-control-file"
+
+
+              />
             </div>
           </form>
           <div className="PostModal__buttons">
 
             <button onClick={onClose} className="btn btn-light">cancel</button>
-            <button className="btn btn-primary">Upload</button>
+            <button
+              onClick={onPostSubmit}
+
+              className="btn btn-primary">Upload</button>
           </div>
         </div>
       </div>

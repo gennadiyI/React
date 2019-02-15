@@ -1,16 +1,18 @@
 
 import {
-    REGISTER_SUCCESS, REGISTER_ERROR,
-    LOGIN_SUCCESS, LOGIN_ERRORR,
-    GET_USERS_SUCCESS, GET_USERS_ERROR
-} from "../../constants"
+    REGISTER_SUCCESS,
+    REGISTER_ERROR,
+    LOGIN_SUCCESS,
+    LOGIN_ERROR,
+    GET_USERS_SUCCESS,
+    GET_USERS_ERROR
+} from "../../constants";
 
 const defaultState = {
     isRegistered: false,
     isLoggedIn: false,
     users: null
 };
-
 
 export const registerReducer = (state = defaultState, action) => {
     switch (action.type) {
@@ -21,19 +23,17 @@ export const registerReducer = (state = defaultState, action) => {
         default:
             return state;
     }
-
 };
 
 export const loginReducer = (state = defaultState, action) => {
     switch (action.type) {
         case LOGIN_SUCCESS:
             return { ...state, isLoggedIn: true };
-        case LOGIN_ERRORR:
+        case LOGIN_ERROR:
             return { ...state, isLoggedIn: false };
         default:
             return state;
     }
-
 };
 
 export const getUsersReducer = (state = defaultState, action) => {
@@ -44,7 +44,5 @@ export const getUsersReducer = (state = defaultState, action) => {
             return { ...state, users: null };
         default:
             return state;
-
     }
-
-}
+};

@@ -12,9 +12,7 @@ class UserListContainer extends Component {
         const { users } = this.props;
         if (!users) {
             return <div><Spinner
-                style={{ width: '30em', height: '35rem' }}
                 color="danger"
-
             /> loading ... </div>;
         }
 
